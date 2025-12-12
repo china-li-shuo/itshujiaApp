@@ -24,6 +24,17 @@
 					<navigator class='col' :url="'/pages/read/read?identify='+about">关于我们</navigator>
 					<view class='col text-right' @click='findPassword'>忘记密码？</view>
 				</view>
+				<view class='row font-lv4 color-grey' style='margin-bottom: 15px;'>
+					<view class='col text-center'>
+						<checkbox-group @change="onPrivacyChange">
+							<label style="white-space: nowrap;">
+								<checkbox value="1" :checked="agreedPrivacy" />
+								我已阅读并同意
+								<navigator url="/pages/read/read?identify=help/privacy" style="display:inline;">《隐私协议》</navigator>
+							</label>
+						</checkbox-group>
+					</view>
+				</view>
 				<view class='row'>
 					<button class='btn-submit btn-block' :loading='loading' form-type='submit'> 码上登录 </button>
 				</view>
@@ -59,10 +70,14 @@
 				about: config.info.about,
 				redirect: encodeURIComponent('/pages/me/me'),
 				loadingWechat: false,
+				agreedPrivacy: false,
 			}
 		},
 		onLoad: function(op) {
 			if (config.debug) console.log("onLoad", op)
+			// 从本地缓存读取是否已同意隐私协议，如果之前同意过，则本次默认视为已同意
+			let agreed = uni.getStorageSync('privacy-agreed')
+			this.agreedPrivacy = agreed ? true : false
 			if (op.redirect) this.redirect = op.redirect
 		},
 		onShow: function() {
@@ -86,9 +101,18 @@
 					url: '/pages/reg/reg?redirect=' + this.redirect
 				})
 			},
+			onPrivacyChange: function(e) {
+				this.agreedPrivacy = e.detail.value && e.detail.value.length > 0
+				// 将用户是否同意隐私协议的状态持久化到本地，只要同意过一次，以后再次使用无需重复勾选
+				if (this.agreedPrivacy) {
+					uni.setStorageSync('privacy-agreed', true)
+				} else {
+					uni.setStorageSync('privacy-agreed', false)
+				}
+			},
 			findPassword: function(e) {
 				uni.showModal({
-					title: '温馨提示',
+					title: '温馨提示',
 					content: '目前一闪笔记暂不支持找回密码的功能，如果忘记了密码，请打开一闪笔记网(https://www.golangblogs.com)将密码找回',
 				})
 			},
@@ -97,6 +121,11 @@
 
 				if (config.debug) console.log("formSubmit", e);
 				if (that.loading) return;
+
+				if (!that.agreedPrivacy) {
+					util.toastError('请先阅读并勾选同意隐私协议')
+					return
+				}
 
 				if (e.detail.value.password == '' || e.detail.value.username == '') {
 					util.toastError('账号和密码均不能为空')
@@ -136,6 +165,11 @@
 			wechatLogin: function(e) {
 				let that = this
 				let weUser = e.detail
+
+				if (!that.agreedPrivacy) {
+					util.toastError('请先阅读并勾选同意《隐私协议》')
+					return
+				}
 
 				if (that.loadingWechat) return
 				that.loadingWechat = true
