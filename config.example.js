@@ -7,7 +7,7 @@ let host = 'http://127.0.0.1:8181/bookchat'
 // let host = ''
 
 // 默认分享的内容
-let shareContent = '发现你未知的IT宝藏，尽在IT书架！'
+let shareContent = '发现你未知的IT宝藏，尽在一闪笔记！'
 let shareLink = 'https://itshujia.com/books/help'
 
 // 是否是调试模式。如果是生产环境，请设置为false
@@ -20,7 +20,7 @@ const bannerAdUnitId = ''
 const info = {
 	about: 'help/about', // "关于我们"的文档标识
 	version: 'v2.0',
-	copyright: 'IT书架',
+	copyright: '一闪笔记',
 	license: 'Apache 2.0',
 	author: '李柯著',
 }

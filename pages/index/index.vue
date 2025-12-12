@@ -99,7 +99,7 @@
 		},
 		onShareAppMessage: function () {
 			 return {
-			   title: '数千道面试题，尽在IT书架，一个年轻的开发社区',
+			   title: '数千道面试题，尽在一闪笔记，一个年轻的开发社区',
 			   path: '/pages/index/index', // 分享页面的路径
 			   imageUrl: '/static/img/itshare.png' // 分享图片的路径，可选
 			 }

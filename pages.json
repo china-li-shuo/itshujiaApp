@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "IT书架"
+				"navigationBarTitleText": "一闪笔记"
 			}
 		}, {
 			"path": "pages/read/read"
@@ -83,12 +83,12 @@
 		}
 	    ,{
             "path" : "pages/bind/bind",
-            "style" :                                                                                    
+            "style" :
             {
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
-            
+
         }
     ],
 	"tabBar": {
@@ -123,7 +123,7 @@
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "IT书架",
+		"navigationBarTitleText": "一闪笔记",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF",
 		"navigationStyle": "custom"

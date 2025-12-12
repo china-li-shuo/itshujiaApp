@@ -54,7 +54,7 @@
 		props: {
 			title: {
 				type: String,
-				default: 'IT书架'
+				default: '一闪笔记'
 			},
 			showIcon: {
 				type: Boolean,

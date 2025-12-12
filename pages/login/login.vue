@@ -89,7 +89,7 @@
 			findPassword: function(e) {
 				uni.showModal({
 					title: '温馨提示',
-					content: '目前IT书架暂不支持找回密码的功能，如果忘记了密码，请打开IT书架网(https://www.golangblogs.com)将密码找回',
+					content: '目前一闪笔记暂不支持找回密码的功能，如果忘记了密码，请打开一闪笔记网(https://www.golangblogs.com)将密码找回',
 				})
 			},
 			formSubmit: function(e) {
