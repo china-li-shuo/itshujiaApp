@@ -1,3 +1,5 @@
+
+
 [TOC]
 
 # 一闪笔记APP
@@ -79,7 +81,7 @@ APP下载体验地址： https://www.itshujia.com
 - [x] 内容点评页         /pages/comment/comment
 - [x] 404页            /pages/notfound/notfound
 - [x] 登录页            /pages/login/login
-- [x] 注册页            /pages/register/register
+- [x] 注册页            /pages/reg/reg
 - [x] 书籍介绍页         /pages/intro/intro
 
 
@@ -156,4 +158,3 @@ APP下载体验地址： https://www.itshujia.com
 -----
 
 ![](unpackage/images/search-book-2.png)
-
